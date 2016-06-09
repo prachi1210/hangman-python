@@ -1,7 +1,7 @@
 import os, random, turtle
 
 stage=0  
-def get_random_line(file_name):
+def get_random_word(file_name):
     total_bytes = os.stat(file_name).st_size 
     random_point = random.randint(0, total_bytes)
     file = open(file_name)
@@ -82,13 +82,13 @@ def spaces(word):
 def mistake(word, char, stage):
     go_to(-5-(len(word)//2*20) - (len(word)//2*10), -200, 0)
     turtle.penup()
-    for j in range(stage[0]):
+    for j in range(stage):
         turtle.forward(20)
     turtle.pendown()
     turtle.write(char, align='center', font=("Time New Roman", 12, "normal"))
     hang(stage)
 
-def play(word, out,stage):
+def play(word, out, stage):
     ch=raw_input('Choose letter to type ')
     key=''
     if ch in word:
@@ -100,6 +100,28 @@ def play(word, out,stage):
                 key+=out[i]
         return key
     else:
-        mistake(word, ch,stage)
+        mistake(word, ch, stage)
         return out
+
+def main():
+    word=get_random_word(r"C:\Udacity\hangman-python\wordlist.txt").strip('\n').lower()
+    print(word)
+    stage=0
+    print("We have a chosen a "+str(len(word))+" lettered word")
+    spaces(word)
+    out=''
+    for i in range(len(word)):
+        out+='_'
+    while out != word and stage<=4:
+        print(out)
+        out=play(word, out, stage)
+    if stage > 4:
+        print('Oops. You died')
+        turtle.bgcolor('red')
+        turtle.exitonclick()
+    else:
+        print('Congratulations. You guessed correctly ' + word + '!')
+        turtle.exitonclick()
+if __name__ == '__main__':
+    main()
 
