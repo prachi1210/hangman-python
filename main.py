@@ -100,7 +100,7 @@ def play(word, out):
         return out
 
 def main():
-    word=get_random_word(r"C:\hangman-python\wordlist.txt").strip('\n').lower()
+    word=get_random_word(r"wordlist.txt").strip('\n').lower()
     print(word)
     #print(len(word))
     print("We have a chosen a "+str(len(word))+" lettered word")
