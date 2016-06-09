@@ -1,4 +1,4 @@
-import os, random,turtle
+import os, random, turtle
 
 stage=0  
 def get_random_line(file_name):
@@ -47,8 +47,34 @@ def hang(stage):
         go_to(0,100, -135)
         turtle.forward(25)
     return 0
-stage = 0
-while(stage<5):
-    hang(stage)
     stage+=1
-    
+
+#while(stage<5):
+    #hang(stage)
+    #stage+=1
+def spaces(word):
+    l=len(word)
+    if l %2 !=0:
+        go_to(-5-(l//2*20) - (l//2*10), -150, 0)
+        for i in range(l):
+            turtle.forward(20)
+            turtle.penup()
+            turtle.forward(10)
+            turtle.pendown()
+    else:
+        go_to(-(l//2*20) - (l//2*10), -150, 0)
+        for i in range(l):
+            turtle.forward(20)
+            turtle.penup()
+            turtle.forward(10)
+            turtle.pendown()
+
+def error(word, char, stage):
+    go_to(-5-(len(word)//2*20) - (len(word)//2*10), -200, 0)
+    turtle.penup()
+    for j in range(stage[0]):
+        turtle.forward(20)
+    turtle.pendown()
+    turtle.write(char, align='center', font=("Arial", 8, "normal"))
+    hang(stage)
+
