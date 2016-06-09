@@ -20,7 +20,7 @@ def pt(word, char, i):
         turtle.forward(10)
     turtle.forward(10)
     turtle.pendown()
-    turtle.write(char, align='center', font=("Times New Roman", 24, "normal"))
+    turtle.write(char, align='center', font=("Arial", 24, "normal"))
     
 def go_to(x, y, p):
     turtle.hideturtle()
@@ -56,8 +56,8 @@ def hang(stage):
         turtle.forward(25)
         go_to(0,100, -135)
         turtle.forward(25)
-    return 0
     stage+=1
+    return 0
 
 #while(stage<5):
     #hang(stage)
@@ -85,7 +85,7 @@ def mistake(word, char, stage):
     for j in range(stage):
         turtle.forward(20)
     turtle.pendown()
-    turtle.write(char, align='center', font=("Time New Roman", 12, "normal"))
+    turtle.write(char, align='center', font=("Arial", 8, "normal"))
     hang(stage)
 
 def play(word, out, stage):
@@ -110,12 +110,13 @@ def main():
     #print(len(word))
     print("We have a chosen a "+str(len(word))+" lettered word")
     spaces(word)
-    out=''
+    out=' '
     for i in range(len(word)):
         out+='_'
     while out != word and stage<=4:
         print(out)
         out=play(word, out, stage)
+        stage=stage+1
     if stage > 4:
         print('Oops. You died')
         turtle.bgcolor('red')
