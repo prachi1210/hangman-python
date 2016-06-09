@@ -9,7 +9,7 @@ def get_random_word(file_name):
     file.readline() # skip this line to clear the partial line
     return file.readline()
 
-#line= get_random_line(r"C:\Udacity\hangman-python\wordlist.txt")
+#line= get_random_line(r"C:\hangman-python\wordlist.txt")
 #print(line)
 
 def pt(word, char, i):
@@ -107,6 +107,7 @@ def main():
     word=get_random_word(r"C:\Udacity\hangman-python\wordlist.txt").strip('\n').lower()
     print(word)
     stage=0
+    #print(len(word))
     print("We have a chosen a "+str(len(word))+" lettered word")
     spaces(word)
     out=''
