@@ -12,6 +12,16 @@ def get_random_line(file_name):
 #line= get_random_line(r"C:\Udacity\hangman-python\wordlist.txt")
 #print(line)
 
+def pt(word, char, i):
+    go_to(-5-(len(word)//2*20) - (len(word)//2*10), -150, 0)
+    turtle.penup()
+    for j in range(i):
+        turtle.forward(20)
+        turtle.forward(10)
+    turtle.forward(10)
+    turtle.pendown()
+    turtle.write(char, align='center', font=("Times New Roman", 24, "normal"))
+    
 def go_to(x, y, p):
     turtle.hideturtle()
     turtle.penup()
@@ -69,12 +79,27 @@ def spaces(word):
             turtle.forward(10)
             turtle.pendown()
 
-def error(word, char, stage):
+def mistake(word, char, stage):
     go_to(-5-(len(word)//2*20) - (len(word)//2*10), -200, 0)
     turtle.penup()
     for j in range(stage[0]):
         turtle.forward(20)
     turtle.pendown()
-    turtle.write(char, align='center', font=("Arial", 8, "normal"))
+    turtle.write(char, align='center', font=("Time New Roman", 12, "normal"))
     hang(stage)
+
+def play(word, out,stage):
+    ch=raw_input('Choose letter to type ')
+    key=''
+    if ch in word:
+        for i in range(len(word)):
+            if ch==word[i]:
+                key+=ch
+                pt(word, ch, i)
+            else:
+                key+=out[i]
+        return key
+    else:
+        mistake(word, ch,stage)
+        return out
 
